@@ -1,5 +1,5 @@
-﻿using DAL_Common.Model;
-using DAL_Common.Model.Common;
+﻿using DAL.Common.Model;
+using DAL.Common.Model.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -91,7 +91,7 @@ namespace DAL.EntityFramework.Data
         private void OnBeforeSaving()
         {
             //select only entities which inherit from BaseEntity
-            foreach (var entity in ChangeTracker.Entries<EntityChangeTracker>())
+            foreach (var entity in ChangeTracker.Entries<SoftDeleteEntity>())
             {
                 switch (entity.State)
                 {

@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="GraphQL" Version="2.4.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Stats\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj" />
+	  <ProjectReference Include="..\DAL.Common\DAL.Common.csproj" />
+	</ItemGroup>
+
+</Project>

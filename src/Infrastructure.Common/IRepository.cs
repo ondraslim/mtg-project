@@ -1,4 +1,4 @@
-﻿using Infrastructure.Common.Entities;
+﻿using Infrastructure.Common.Entity;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Common
