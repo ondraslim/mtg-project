@@ -1,6 +1,7 @@
 ﻿using Infrastructure.Common.Entity;
 using System;
 using System.ComponentModel.DataAnnotations;
+using Riganti.Utils.Infrastructure.Core;
 
 namespace DAL.Common.Model.Common
 {

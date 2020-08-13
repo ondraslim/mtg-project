@@ -6,10 +6,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL.Common.Model
 {
-    [Table(nameof(Deck))]
-    public class Deck : SoftDeleteEntity
+    [Table(nameof(DeckEntity))]
+    public class DeckEntity : SoftDeleteEntity
     {
-        [Required, MaxLength(32)] 
+        [Required, MaxLength(32)]
         public string Name { get; set; }
 
         public Guid UserId { get; set; }

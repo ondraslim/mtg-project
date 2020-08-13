@@ -8,10 +8,10 @@ namespace BusinessLayer.Mappings
     {
         public DeckMapping()
         {
-            CreateMap<DeckCreateDto, Deck>();
-            CreateMap<DeckUpdateDto, Deck>();
-            CreateMap<Deck, DeckListDto>();
-            CreateMap<Deck, DeckDetailDto>();
+            CreateMap<DeckCreateDto, DeckEntity>();
+            CreateMap<DeckUpdateDto, DeckEntity>();
+            CreateMap<DeckEntity, DeckListDto>();
+            CreateMap<DeckEntity, DeckDetailDto>();
         }
     }
 }

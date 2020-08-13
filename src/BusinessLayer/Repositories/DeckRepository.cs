@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using BusinessLayer.DTOs.Decks;
 using DAL.Common.Model;
-using DAL.EntityFramework;
-using DAL.EntityFramework.Data;
 using Microsoft.EntityFrameworkCore;
+using Riganti.Utils.Infrastructure.Core;
+using Riganti.Utils.Infrastructure.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,26 +11,25 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Repositories
 {
-    public class DeckRepository : EntityFrameworkRepository<Deck, Guid>
+    public class DeckRepository : DAL.EntityFramework.EntityFrameworkRepository<DeckEntity, Guid>
     {
-        private readonly IMapper _mapper;
+        private readonly IMapper mapper;
 
-        public DeckRepository(IMapper mapper, MtgDbContext dbContext)
-            : base(dbContext)
+        public DeckRepository(EntityFrameworkUnitOfWorkProvider entityFrameworkUnitOfWorkProvider, IDateTimeProvider dateTimeProvider)
+            : base(entityFrameworkUnitOfWorkProvider, dateTimeProvider)
         {
-            _mapper = mapper;
         }
 
-        public Task<List<DeckListDto>> LisAllAsync()
+        public async Task<IList<DeckEntity>> GetAllAsync()
         {
-            return _mapper.ProjectTo<DeckListDto>(DbContext.Decks).ToListAsync();
+            return await Context.Decks.ToListAsync();
         }
 
         public Task<List<DeckListDto>> GetDecksOfUserAsync(Guid userId)
         {
-            return _mapper.ProjectTo<DeckListDto>(DbContext.Decks
-                    .Where(d => d.UserId == userId))
-                .ToListAsync();
+            return mapper.ProjectTo<DeckListDto>(Context.Decks.Where(d => d.UserId == userId)).ToListAsync();
         }
+
+
     }
 }

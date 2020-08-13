@@ -19,7 +19,7 @@ namespace GraphQL.API.Mutations
                 resolve: context =>
                 {
                     var deck = context.GetArgument<DeckCreateDto>("deck");
-                    return deckRepository.Create(mapper.Map<DeckCreateDto, Deck>(deck)); 
+                    return deckRepository.Create(mapper.Map<DeckCreateDto, DeckEntity>(deck)); 
                     // TODO: should not reference DAL! add service/facade with conversion
                 });
         }

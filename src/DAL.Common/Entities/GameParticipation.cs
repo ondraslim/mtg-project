@@ -20,7 +20,7 @@ namespace DAL.Common.Model
         public Guid DeckId { get; set; }
 
         [ForeignKey(nameof(DeckId))] 
-        public virtual Deck Deck { get; set; }
+        public virtual DeckEntity Deck { get; set; }
 
         public Guid StatsId { get; set; }
 

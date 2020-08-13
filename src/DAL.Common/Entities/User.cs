@@ -20,6 +20,6 @@ namespace DAL.Common.Model
 
         public virtual ICollection<GameParticipation> GameParticipations { get; set; }
 
-        public virtual ICollection<Deck> Decks { get; set; }
+        public virtual ICollection<DeckEntity> Decks { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace DAL.EntityFramework.Data
     public class MtgDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
-        public DbSet<Deck> Decks { get; set; }
+        public DbSet<DeckEntity> Decks { get; set; }
         public DbSet<Game> Games { get; set; }
         public DbSet<Stats> Stats { get; set; }
         public DbSet<GameParticipation> GameParticipations { get; set; }

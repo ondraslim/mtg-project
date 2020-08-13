@@ -1,16 +1,17 @@
-using DAL.EntityFramework.Data;
-using GraphQL.API.Config;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using GraphiQl;
-using GraphQL.Server.Ui.Playground;
+using Microsoft.Extensions.Logging;
 
-namespace GraphQL.API
+namespace REST.API
 {
     public class Startup
     {
@@ -25,17 +26,6 @@ namespace GraphQL.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
-            services.AddCors();
-
-
-            var connectionString = Configuration.GetConnectionString("db");
-            services.AddDbContext<MtgDbContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Transient);
-            services.AddSingleton(provider => new Func<DbContext>(provider.GetService<MtgDbContext>));
-
-            //windsor registration of components
-            var serviceResolver = new ServiceResolver(services);
-            serviceResolver.GetServiceProvider();   // TODO: setup service provider
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,9 +35,6 @@ namespace GraphQL.API
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseGraphiQl();
-            //app.UseMvc();
 
             app.UseHttpsRedirection();
 

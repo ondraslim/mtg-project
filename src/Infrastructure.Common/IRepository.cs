@@ -1,4 +1,4 @@
-﻿using Infrastructure.Common.Entity;
+﻿using Riganti.Utils.Infrastructure.Core;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Common

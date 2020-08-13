@@ -11,7 +11,7 @@ namespace GraphQL.API.Queries
         {
             Field<ListGraphType<DeckType>>(
                 "decks",
-                resolve: context => deckRepository.LisAllAsync());
+                resolve: context => deckRepository.GetAllAsync());
 
             Field<DeckType>(
                 "deck",
