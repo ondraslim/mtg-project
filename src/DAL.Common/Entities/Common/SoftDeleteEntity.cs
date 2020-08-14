@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DAL.Common.Model.Common
+namespace DAL.Common.Entities.Common
 {
     public class SoftDeleteEntity : EntityBase
     {

@@ -1,21 +1,21 @@
-﻿using System;
+﻿using DAL.Common.Entities.Common;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using DAL.Common.Model.Common;
 
-namespace DAL.Common.Model
+namespace DAL.Common.Entities
 {
-    [Table(nameof(GameParticipation))]
-    public class GameParticipation : SoftDeleteEntity
+    [Table(nameof(GameParticipationEntity))]
+    public class GameParticipationEntity : SoftDeleteEntity
     {
         public Guid GameId { get; set; }
 
         [ForeignKey(nameof(GameId))]
-        public virtual Game Game { get; set; }
+        public virtual GameEntity GameEntity { get; set; }
 
         public Guid UserId { get; set; }
 
         [ForeignKey(nameof(UserId))] 
-        public virtual User User { get; set; }
+        public virtual UserEntity UserEntity { get; set; }
 
         public Guid DeckId { get; set; }
 
@@ -25,7 +25,7 @@ namespace DAL.Common.Model
         public Guid StatsId { get; set; }
 
         [ForeignKey(nameof(StatsId))] 
-        public virtual Stats Stats { get; set; }
+        public virtual StatsEntity StatsEntity { get; set; }
 
         public bool IsWinner { get; set; }
     }

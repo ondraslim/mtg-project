@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using BusinessLayer.DTOs.GameParticipations;
-using DAL.Common.Model;
+using DAL.Common.Entities;
 
 namespace BusinessLayer.Mappings
 {
@@ -8,10 +8,10 @@ namespace BusinessLayer.Mappings
     {
         public GameParticipantMapping()
         {
-            CreateMap<GameParticipation, GameParticipationListDto>()
+            CreateMap<GameParticipationEntity, GameParticipationListDto>()
                 .ForMember(gp => gp.DeckName, e => e.MapFrom(g => g.Deck.Name))
-                .ForMember(gp => gp.UserName, e => e.MapFrom(g => g.User.Name));
-            CreateMap<GameParticipationCreateDto, GameParticipation>();
+                .ForMember(gp => gp.UserName, e => e.MapFrom(g => g.UserEntity.Name));
+            CreateMap<GameParticipationCreateDto, GameParticipationEntity>();
         }
     }
 }

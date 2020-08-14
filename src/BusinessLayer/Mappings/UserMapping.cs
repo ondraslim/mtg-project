@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using BusinessLayer.DTOs.Users;
-using DAL.Common.Model;
+using DAL.Common.Entities;
 
 namespace BusinessLayer.Mappings
 {
@@ -8,10 +8,10 @@ namespace BusinessLayer.Mappings
     {
         public UserMapping()
         {
-            CreateMap<UserCreateDto, User>();
-            CreateMap<UserUpdateDto, User>();
-            CreateMap<UserLoginDto, User>();
-            CreateMap<User, UserDetailDto>();
+            CreateMap<UserCreateDto, UserEntity>();
+            CreateMap<UserUpdateDto, UserEntity>();
+            CreateMap<UserLoginDto, UserEntity>();
+            CreateMap<UserEntity, UserDetailDto>();
         }
     }
 }

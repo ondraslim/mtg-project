@@ -1,5 +1,4 @@
 ﻿using BusinessLayer.DTOs.Stats;
-using DAL.Common.Model;
 using DAL.EntityFramework;
 using DAL.EntityFramework.Data;
 using Microsoft.EntityFrameworkCore;
@@ -7,10 +6,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DAL.Common.Entities;
 
 namespace BusinessLayer.Repositories
 {
-    public class GameParticipationRepository : EntityFrameworkRepository<GameParticipation, Guid>
+    /*
+    public class GameParticipationRepository : EntityFrameworkRepository<GameParticipationEntity, Guid>
     {
         public GameParticipationRepository(MtgDbContext dbContext)
             : base(dbContext)
@@ -19,8 +20,8 @@ namespace BusinessLayer.Repositories
 
         public Task<List<StatsDetailDto>> GetUsersBasedOnWinCountAsync()
         {
-            return DbContext.Set<GameParticipation>()
-                .GroupBy(gameParticipant => new {gameParticipant.UserId, gameParticipant.User.Name})
+            return DbContext.Set<GameParticipationEntity>()
+                .GroupBy(gameParticipant => new {gameParticipant.UserId, gameParticipant.UserEntity.Name})
                 .Select(gameCounts => new StatsDetailDto
                     {
                         Id = gameCounts.Key.UserId,
@@ -37,4 +38,5 @@ namespace BusinessLayer.Repositories
                 .ToListAsync();
         }
     }
+    */
 }

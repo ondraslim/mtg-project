@@ -1,9 +1,8 @@
-﻿using Infrastructure.Common.Entity;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using Riganti.Utils.Infrastructure.Core;
 
-namespace DAL.Common.Model.Common
+namespace DAL.Common.Entities.Common
 {
     public class EntityBase : IEntity<Guid>
     {

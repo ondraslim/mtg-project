@@ -6,6 +6,7 @@ namespace GraphQL.Types.Game
 {
     public class GameType : ObjectGraphType<GameDto>
     {
+        /*
         public GameType(GameRepository gameRepository)
         {
             Field(x => x.Id);
@@ -14,5 +15,6 @@ namespace GraphQL.Types.Game
             Field<ListGraphType<GameParticipationType>>(nameof(GameParticipation),
                 resolve: context => gameRepository.GetAllGameParticipationsOfGame(context.Source.Id));
         }
+        */
     }
 }

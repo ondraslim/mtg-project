@@ -1,10 +1,10 @@
-﻿using DAL.Common.Model.Common;
+﻿using DAL.Common.Entities.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DAL.Common.Model
+namespace DAL.Common.Entities
 {
     [Table(nameof(DeckEntity))]
     public class DeckEntity : SoftDeleteEntity
@@ -15,9 +15,9 @@ namespace DAL.Common.Model
         public Guid UserId { get; set; }
 
         [ForeignKey(nameof(UserId))]
-        public virtual User User { get; set; }
+        public virtual UserEntity UserEntity { get; set; }
 
-        public virtual ICollection<GameParticipation> GameParticipations { get; set; }
+        public virtual ICollection<GameParticipationEntity> GameParticipations { get; set; }
 
     }
 }

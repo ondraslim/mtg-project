@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using DAL.Common.Model.Common;
+using DAL.Common.Entities.Common;
 
-namespace DAL.Common.Model
+namespace DAL.Common.Entities
 {
-    [Table(nameof(User))]
-    public class User : SoftDeleteEntity
+    [Table(nameof(UserEntity))]
+    public class UserEntity : SoftDeleteEntity
     {
         [Required] [MaxLength(32)] public string Name { get; set; }
 
@@ -18,7 +18,7 @@ namespace DAL.Common.Model
         public string RolesString { get; set; } = "User";
 
 
-        public virtual ICollection<GameParticipation> GameParticipations { get; set; }
+        public virtual ICollection<GameParticipationEntity> GameParticipations { get; set; }
 
         public virtual ICollection<DeckEntity> Decks { get; set; }
     }

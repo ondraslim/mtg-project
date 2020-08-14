@@ -1,6 +1,8 @@
-﻿namespace GraphQL.Types.User
+﻿using DAL.Common.Entities;
+
+namespace GraphQL.Types.User
 {
-    public class UserType : ObjectGraphType<DAL.Common.Model.User>
+    public class UserType : ObjectGraphType<UserEntity>
     {
         public UserType()
         {

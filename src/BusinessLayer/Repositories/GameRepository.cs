@@ -1,15 +1,16 @@
 ﻿using AutoMapper;
 using BusinessLayer.DTOs.GameParticipations;
-using DAL.Common.Model;
 using DAL.EntityFramework;
 using DAL.EntityFramework.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
+using DAL.Common.Entities;
 
 namespace BusinessLayer.Repositories
 {
-    public class GameRepository : EntityFrameworkRepository<Game, Guid>
+    /*
+    public class GameRepository : EntityFrameworkRepository<GameEntity, Guid>
     {
         private readonly IMapper _mapper;
 
@@ -28,4 +29,5 @@ namespace BusinessLayer.Repositories
                 .ToListAsync();
         }
     }
+    */
 }

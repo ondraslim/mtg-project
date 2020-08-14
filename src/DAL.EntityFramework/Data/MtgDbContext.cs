@@ -1,5 +1,5 @@
-﻿using DAL.Common.Model;
-using DAL.Common.Model.Common;
+﻿using DAL.Common.Entities;
+using DAL.Common.Entities.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,11 +11,11 @@ namespace DAL.EntityFramework.Data
 {
     public class MtgDbContext : DbContext
     {
-        public DbSet<User> Users { get; set; }
+        public DbSet<UserEntity> Users { get; set; }
         public DbSet<DeckEntity> Decks { get; set; }
-        public DbSet<Game> Games { get; set; }
-        public DbSet<Stats> Stats { get; set; }
-        public DbSet<GameParticipation> GameParticipations { get; set; }
+        public DbSet<GameEntity> Games { get; set; }
+        public DbSet<StatsEntity> Stats { get; set; }
+        public DbSet<GameParticipationEntity> GameParticipations { get; set; }
 
 
         public MtgDbContext(DbContextOptions<MtgDbContext> options) : base(options)
@@ -58,26 +58,28 @@ namespace DAL.EntityFramework.Data
                 relationship.DeleteBehavior = DeleteBehavior.Restrict; //entities with relation will not be deleted.
             }
 
-            modelBuilder.Entity<User>()
+            modelBuilder.Entity<UserEntity>()
                 .HasMany(u => u.Decks)
-                .WithOne(d => d.User)
+                .WithOne(d => d.UserEntity)
                 .HasForeignKey(u => u.UserId);
 
-            modelBuilder.Entity<GameParticipation>()
-                .HasOne(cd => cd.Game)
+            modelBuilder.Entity<GameParticipationEntity>()
+                .HasOne(cd => cd.GameEntity)
                 .WithMany(c => c.GameParticipations)
                 .HasForeignKey(cd => cd.GameId);
 
-            modelBuilder.Entity<GameParticipation>()
-                .HasOne(cd => cd.User)
+            modelBuilder.Entity<GameParticipationEntity>()
+                .HasOne(cd => cd.UserEntity)
                 .WithMany(c => c.GameParticipations)
                 .HasForeignKey(cd => cd.UserId);
 
 
-            modelBuilder.Entity<GameParticipation>()
+            modelBuilder.Entity<GameParticipationEntity>()
                 .HasOne(cd => cd.Deck)
                 .WithMany(c => c.GameParticipations)
                 .HasForeignKey(cd => cd.DeckId);
+
+            modelBuilder.SeedData();
 
             base.OnModelCreating(modelBuilder);
         }

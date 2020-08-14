@@ -1,10 +1,10 @@
-﻿using System;
-using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using BusinessLayer.DTOs.Decks;
-using DAL.Common.Model;
+using DAL.Common.Entities;
 using DAL.EntityFramework;
 using Riganti.Utils.Infrastructure.Core;
+using System;
+using System.Linq;
 
 namespace BusinessLayer.Queries
 {

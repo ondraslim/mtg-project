@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using BusinessLayer.DTOs.Decks;
 using BusinessLayer.Repositories;
-using DAL.Common.Model;
 using GraphQL.Types;
 using GraphQL.Types.Deck;
+using System;
 
 namespace GraphQL.API.Mutations
 {
@@ -19,8 +19,8 @@ namespace GraphQL.API.Mutations
                 resolve: context =>
                 {
                     var deck = context.GetArgument<DeckCreateDto>("deck");
-                    return deckRepository.Create(mapper.Map<DeckCreateDto, DeckEntity>(deck)); 
-                    // TODO: should not reference DAL! add service/facade with conversion
+                   // return deckRepository.Create(mapper.Map<DeckCreateDto, DeckEntity>(deck)); 
+                   return Guid.Empty; //TODO
                 });
         }
     }
