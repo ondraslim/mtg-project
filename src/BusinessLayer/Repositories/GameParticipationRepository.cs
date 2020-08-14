@@ -11,7 +11,7 @@ using DAL.Common.Entities;
 namespace BusinessLayer.Repositories
 {
     /*
-    public class GameParticipationRepository : EntityFrameworkRepository<GameParticipationEntity, Guid>
+    public class GameParticipationRepository : AppEntityFrameworkRepository<GameParticipationEntity, Guid>
     {
         public GameParticipationRepository(MtgDbContext dbContext)
             : base(dbContext)

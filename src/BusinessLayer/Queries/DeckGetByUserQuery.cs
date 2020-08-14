@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using BusinessLayer.DTOs.Decks;
 using DAL.Common.Entities;
-using DAL.EntityFramework;
+using DAL.EntityFramework.Query;
 using Riganti.Utils.Infrastructure.Core;
 using System;
 using System.Linq;

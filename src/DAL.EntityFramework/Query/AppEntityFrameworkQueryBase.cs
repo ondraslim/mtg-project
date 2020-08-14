@@ -1,14 +1,15 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using DAL.EntityFramework.Data;
+using Infrastructure.Common.Query;
 using Microsoft.EntityFrameworkCore;
 using Riganti.Utils.Infrastructure.Core;
 using Riganti.Utils.Infrastructure.EntityFrameworkCore;
 using System.Linq;
 
-namespace DAL.EntityFramework
+namespace DAL.EntityFramework.Query
 {
-    public abstract class AppEntityFrameworkQueryBase<TResult, TEntity, TKey> : EntityFrameworkQuery<TResult, MtgDbContext>
+    public abstract class AppEntityFrameworkQueryBase<TResult, TEntity, TKey> : EntityFrameworkQuery<TResult, MtgDbContext>, IAppQuery<TResult>
         where TEntity : class
     {
         private readonly IMapper mapper;

@@ -4,7 +4,7 @@ using Infrastructure.Common;
 using Riganti.Utils.Infrastructure.Core;
 using Riganti.Utils.Infrastructure.EntityFrameworkCore;
 
-namespace DAL.EntityFramework
+namespace DAL.EntityFramework.UnitOfWork
 {
     public class AppEntityFrameworkUnitOfWorkProvider : EntityFrameworkUnitOfWorkProvider<MtgDbContext>, IAppUnitOfWorkProvider
     {

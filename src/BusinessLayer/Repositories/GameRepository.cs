@@ -10,7 +10,7 @@ using DAL.Common.Entities;
 namespace BusinessLayer.Repositories
 {
     /*
-    public class GameRepository : EntityFrameworkRepository<GameEntity, Guid>
+    public class GameRepository : AppEntityFrameworkRepository<GameEntity, Guid>
     {
         private readonly IMapper _mapper;
 
