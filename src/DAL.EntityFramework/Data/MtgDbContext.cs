@@ -63,6 +63,12 @@ namespace DAL.EntityFramework.Data
                 .WithOne(d => d.UserEntity)
                 .HasForeignKey(u => u.UserId);
 
+
+            modelBuilder.Entity<GameEntity>()
+                .HasMany(c => c.GameParticipations)
+                .WithOne(cd => cd.GameEntity)
+                .HasForeignKey(cd => cd.GameId);
+
             modelBuilder.Entity<GameParticipationEntity>()
                 .HasOne(cd => cd.GameEntity)
                 .WithMany(c => c.GameParticipations)

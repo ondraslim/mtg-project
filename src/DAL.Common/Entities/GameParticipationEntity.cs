@@ -22,11 +22,10 @@ namespace DAL.Common.Entities
         [ForeignKey(nameof(DeckId))] 
         public virtual DeckEntity Deck { get; set; }
 
-        public Guid StatsId { get; set; }
-
-        [ForeignKey(nameof(StatsId))] 
-        public virtual StatsEntity StatsEntity { get; set; }
 
         public bool IsWinner { get; set; }
+
+
+        public virtual StatsEntity StatsEntity { get; set; }
     }
 }

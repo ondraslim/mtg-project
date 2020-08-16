@@ -11,134 +11,151 @@ namespace DAL.EntityFramework.Data
         {
             var firstUserId = Guid.NewGuid();
             var secondUserId = Guid.NewGuid();
-            
+
             var firstDeckId = Guid.NewGuid();
             var secondDeckId = Guid.NewGuid();
             var thirdDeckId = Guid.NewGuid();
-            
+
             modelBuilder.Entity<UserEntity>().HasData(
                 new UserEntity
                 {
                     Created = new DateTime(2019, 07, 01),
                     Id = firstUserId,
                     Name = "René",
-                    Decks = new List<DeckEntity>
-                    {
-                        new DeckEntity
-                        {
-                            Created = new DateTime(2019, 07, 01),
-                            Id = firstDeckId,
-                            Name = "René Deck 1"
-                        },
-                        new DeckEntity
-                        {
-                            Created = new DateTime(2019, 07, 22),
-                            Id = secondDeckId,
-                            Name = "René Deck 2"
-                        }
-                    }
+                    PasswordHash = ""
                 },
                 new UserEntity
                 {
                     Created = new DateTime(2018, 07, 01),
                     Id = secondUserId,
                     Name = "Rudolf",
-                    Decks = new List<DeckEntity>
-                    {
-                        new DeckEntity
-                        {
-                            Created = new DateTime(2019, 07, 01),
-                            Id = thirdDeckId,
-                            Name = "Rudolf Deck 1"
-                        }
-                    }
+                    PasswordHash = ""
                 }
             );
 
+            modelBuilder.Entity<DeckEntity>().HasData(
+                new DeckEntity
+                {
+                    Created = new DateTime(2019, 07, 01),
+                    Id = firstDeckId,
+                    UserId = firstUserId,
+                    Name = "René Deck 1"
+                },
+                new DeckEntity
+                {
+                    Created = new DateTime(2019, 07, 22),
+                    Id = secondDeckId,
+                    UserId = firstUserId,
+                    Name = "René Deck 2"
+                },
+                new DeckEntity
+                {
+                    Created = new DateTime(2019, 07, 01),
+                    Id = thirdDeckId,
+                    UserId = secondUserId,
+                    Name = "Rudolf Deck 1"
+                }
+            );
+
+            var firstGameId = Guid.NewGuid();
+            var secondGameId = Guid.NewGuid();
             modelBuilder.Entity<GameEntity>().HasData(
                 new GameEntity
                 {
                     Created = new DateTime(2019, 07, 01),
-                    Id = Guid.NewGuid(),
+                    Id = firstGameId,
                     StartingHp = 40,
-                    TurnCount = 11,
-                    GameParticipations = new List<GameParticipationEntity>
-                    {
-                        new GameParticipationEntity
-                        {
-                            Created = new DateTime(2019, 07, 01),
-                            DeckId = firstDeckId,
-                            UserId = firstUserId,
-                            IsWinner = false,
-                            Id = Guid.NewGuid(),
-                            StatsEntity = new StatsEntity
-                            {
-                                Created = new DateTime(2019, 07, 01),
-                                DamageDealt = 22,
-                                DamageReceived = 49,
-                                Id = Guid.NewGuid(),
-                                Kills = 0
-                            }
-                        },
-                        new GameParticipationEntity
-                        {
-                            Created = new DateTime(2019, 07, 01),
-                            DeckId = thirdDeckId,
-                            UserId = secondUserId,
-                            IsWinner = true,
-                            Id = Guid.NewGuid(),
-                            StatsEntity = new StatsEntity
-                            {
-                                Created = new DateTime(2019, 07, 01),
-                                DamageDealt = 49,
-                                DamageReceived = 22,
-                                Id = Guid.NewGuid(),
-                                Kills = 1
-                            }
-                        }
-                    }
+                    TurnCount = 11
                 },
                 new GameEntity
                 {
                     Created = new DateTime(2019, 07, 22),
-                    Id = Guid.NewGuid(),
+                    Id = secondGameId,
                     StartingHp = 40,
-                    TurnCount = 8,
-                    GameParticipations = new List<GameParticipationEntity>
-                    {
-                        new GameParticipationEntity
-                        {
-                            Created = new DateTime(2019, 07, 22),
-                            DeckId = secondDeckId,
-                            UserId = firstUserId,
-                            IsWinner = true,
-                            Id = Guid.NewGuid(),
-                            StatsEntity = new StatsEntity
-                            {
-                                Created = new DateTime(2019, 07, 22),
-                                DamageDealt = 88,
-                                DamageReceived = 11,
-                                Id = Guid.NewGuid(),
-                                Kills = 1
-                            }
-                        },
-                        new GameParticipationEntity
-                        {
-                            Created = new DateTime(2019, 07, 22),
-                            DeckId = thirdDeckId,
-                            UserId = secondUserId,
-                            IsWinner = false,
-                            Id = Guid.NewGuid(),
-                            StatsEntity = new StatsEntity
-                            {
-                                Created = new DateTime(2019, 07, 22),
-                                DamageDealt = 11,
-                                DamageReceived = 88,
-                                Id = Guid.NewGuid(),
-                                Kills = 0
-                            }
-                        }
-                    }
+                    TurnCount = 8
+                }
+            );
+
+            var firstGameFirstParticipantId = Guid.NewGuid();
+            var firstGameSecondParticipantId = Guid.NewGuid();
+            var secondGameFirstParticipantId = Guid.NewGuid();
+            var secondGameSecondParticipantId = Guid.NewGuid();
+
+            modelBuilder.Entity<GameParticipationEntity>().HasData(
+                new GameParticipationEntity
+                {
+                    Created = new DateTime(2019, 07, 01),
+                    GameId = firstGameId,
+                    DeckId = firstDeckId,
+                    UserId = firstUserId,
+                    IsWinner = false,
+                    Id = firstGameFirstParticipantId
+                },
+                new GameParticipationEntity
+                {
+                    Created = new DateTime(2019, 07, 01),
+                    DeckId = thirdDeckId,
+                    GameId = firstGameId,
+                    UserId = secondUserId,
+                    IsWinner = true,
+                    Id = firstGameSecondParticipantId
+                },
+                new GameParticipationEntity
+                {
+                    Created = new DateTime(2019, 07, 22),
+                    DeckId = secondDeckId,
+                    GameId = secondGameId,
+                    UserId = firstUserId,
+                    IsWinner = true,
+                    Id = secondGameFirstParticipantId
+                },
+                new GameParticipationEntity
+                {
+                    Created = new DateTime(2019, 07, 22),
+                    DeckId = thirdDeckId,
+                    GameId = secondGameId,
+                    UserId = secondUserId,
+                    IsWinner = false,
+                    Id = secondGameSecondParticipantId
+                }
+            );
+
+            modelBuilder.Entity<StatsEntity>().HasData(
+                new StatsEntity
+                {
+                    Created = new DateTime(2019, 07, 01),
+                    DamageDealt = 22,
+                    DamageReceived = 49,
+                    Id = Guid.NewGuid(),
+                    GameParticipationEntityId = firstGameFirstParticipantId,
+                    Kills = 0
+                },
+                new StatsEntity
+                {
+                    Created = new DateTime(2019, 07, 01),
+                    DamageDealt = 49,
+                    DamageReceived = 22,
+                    Id = Guid.NewGuid(),
+                    GameParticipationEntityId = firstGameSecondParticipantId,
+                    Kills = 1
+                },
+                new StatsEntity
+                {
+                    Created = new DateTime(2019, 07, 22),
+                    DamageDealt = 88,
+                    DamageReceived = 11,
+                    Id = Guid.NewGuid(),
+                    GameParticipationEntityId = secondGameFirstParticipantId,
+                    Kills = 1
+                },
+                new StatsEntity
+                {
+                    Created = new DateTime(2019, 07, 22),
+                    DamageDealt = 11,
+                    DamageReceived = 88,
+                    Id = Guid.NewGuid(),
+                    GameParticipationEntityId = secondGameSecondParticipantId,
+                    Kills = 0
                 }
             );
         }

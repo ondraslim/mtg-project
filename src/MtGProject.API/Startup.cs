@@ -1,14 +1,15 @@
 using DAL.EntityFramework.Data;
-using GraphQL.API.Config;
+using GraphQL.API.Mutations;
+using GraphQL.API.Queries;
+using HotChocolate;
+using HotChocolate.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using GraphiQl;
-using GraphQL.Server.Ui.Playground;
 
 namespace GraphQL.API
 {
@@ -24,18 +25,22 @@ namespace GraphQL.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-
             services.AddCors();
 
-
             var connectionString = Configuration.GetConnectionString("db");
-            services.AddDbContext<MtgDbContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Transient);
-            services.AddSingleton(provider => new Func<DbContext>(provider.GetService<MtgDbContext>));
+            services.AddDbContext<MtgDbContext>(options => options.UseSqlServer(connectionString));
 
-            //windsor registration of components
-            var serviceResolver = new ServiceResolver(services);
-            serviceResolver.GetServiceProvider();   // TODO: setup service provider
+            services.AddGraphQL(SchemaBuilder.New()
+                    .AddQueryType<Query>()
+                    .AddMutationType<UserMutation>()
+                // .AddType<UserType>()
+                // .AddMutationType<MutationType>()
+                // .AddSubscriptionType<SubscriptionType>()
+                // .AddType<HumanType>()
+                // .AddType<DroidType>()
+                // .AddType<EpisodeType>()
+                // .Create()
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,18 +51,16 @@ namespace GraphQL.API
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseGraphiQl();
-            //app.UseMvc();
-
-            app.UseHttpsRedirection();
-
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseGraphQL();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapGet("/", async context =>
+                {
+                    await context.Response.WriteAsync("Hello World!");
+                });
             });
         }
     }
