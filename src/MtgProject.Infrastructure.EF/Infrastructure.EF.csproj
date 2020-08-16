@@ -10,8 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DAL.Common\DAL.Common.csproj" />
-    <ProjectReference Include="..\Infrastructure.Common\Infrastructure.Common.csproj" />
+    <ProjectReference Include="..\MtgProject.DAL.Common\MtgProject.DAL.Common.csproj" />
+    <ProjectReference Include="..\MtgProject.Infrastructure.Common\MtgProject.Infrastructure.Common.csproj" />
   </ItemGroup>
 
 </Project>

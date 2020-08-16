@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Infrastructure.Common\Infrastructure.Common.csproj" />
+    <ProjectReference Include="..\MtgProject.Infrastructure.Common\MtgProject.Infrastructure.Common.csproj" />
   </ItemGroup>
 
 </Project>

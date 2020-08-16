@@ -21,7 +21,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\GraphQL.Types\GraphQL.Types.csproj" />
+	  <ProjectReference Include="..\MtgProject.GraphQL.Infrastucture\MtgProject.GraphQL.Infrastructure.csproj" />
 	</ItemGroup>
 
 

@@ -22,8 +22,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj" />
-	  <ProjectReference Include="..\DAL.Common\DAL.Common.csproj" />
+	  <ProjectReference Include="..\MtgProject.BL\MtgProject.BL.csproj" />
+	  <ProjectReference Include="..\MtgProject.DAL.Common\MtgProject.DAL.Common.csproj" />
 	</ItemGroup>
 
 </Project>

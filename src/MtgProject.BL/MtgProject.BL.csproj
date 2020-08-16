@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DAL.EntityFramework\DAL.EntityFramework.csproj" />
+    <ProjectReference Include="..\MtgProject.DAL.EntityFramework\MtgProject.DAL.EntityFramework.csproj" />
   </ItemGroup>
 
 </Project>
