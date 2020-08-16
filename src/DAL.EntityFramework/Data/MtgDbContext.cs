@@ -24,6 +24,7 @@ namespace DAL.EntityFramework.Data
 
         public static readonly ILoggerFactory MyLoggerFactory = LoggerFactory.Create(builder => { builder.AddConsole(); });
 
+        // TODO: OnConfiguring cannot be used to modify DbContextOptions when DbContext pooling is enabled
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseLoggerFactory(MyLoggerFactory);
 

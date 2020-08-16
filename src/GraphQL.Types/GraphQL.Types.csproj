@@ -2,14 +2,23 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="GraphQL" Version="2.4.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Stats\" />
+	  <Folder Include="Resolvers\" />
+	  <Folder Include="Types\GameParticipation\" />
+	  <Folder Include="Types\Game\" />
+	  <Folder Include="Types\Stats\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="HotChocolate.Types.Selections" Version="10.5.2" />
+		<PackageReference Include="HotChocolate.Types.Filters" Version="10.5.2" />
+		<PackageReference Include="HotChocolate.Types.Sorting" Version="10.5.2" />
 	</ItemGroup>
 
 	<ItemGroup>

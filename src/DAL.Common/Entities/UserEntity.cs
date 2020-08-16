@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using DAL.Common.Entities.Common;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using DAL.Common.Entities.Common;
 
 namespace DAL.Common.Entities
 {
@@ -18,8 +18,8 @@ namespace DAL.Common.Entities
         public string RolesString { get; set; } = "User";
 
 
-        public virtual ICollection<GameParticipationEntity> GameParticipations { get; set; }
+        public virtual ICollection<GameParticipationEntity> GameParticipations { get; set; } = new List<GameParticipationEntity>();
 
-        public virtual ICollection<DeckEntity> Decks { get; set; }
+        public virtual ICollection<DeckEntity> Decks { get; set; } = new List<DeckEntity>();
     }
 }

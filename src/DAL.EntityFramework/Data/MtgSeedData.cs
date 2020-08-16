@@ -1,7 +1,6 @@
 ﻿using DAL.Common.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 
 namespace DAL.EntityFramework.Data
 {

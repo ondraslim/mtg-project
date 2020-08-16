@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using DAL.Common.Entities.Common;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using DAL.Common.Entities.Common;
 
 namespace DAL.Common.Entities
 {
@@ -11,6 +11,6 @@ namespace DAL.Common.Entities
 
         public int StartingHp { get; set; }
 
-        public virtual ICollection<GameParticipationEntity> GameParticipations { get; set; }
+        public virtual ICollection<GameParticipationEntity> GameParticipations { get; set; } = new List<GameParticipationEntity>();
     }
 }

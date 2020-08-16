@@ -1,6 +1,7 @@
 using DAL.EntityFramework.Data;
-using GraphQL.API.Mutations;
-using GraphQL.API.Queries;
+using GraphQL.Types.DataLoader;
+using GraphQL.Types.Mutations;
+using GraphQL.Types.Queries;
 using HotChocolate;
 using HotChocolate.AspNetCore;
 using Microsoft.AspNetCore.Builder;
@@ -28,11 +29,21 @@ namespace GraphQL.API
             services.AddCors();
 
             var connectionString = Configuration.GetConnectionString("db");
-            services.AddDbContext<MtgDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContext<MtgDbContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Transient);
+            // TODO: uncomment when db context pooling with logging enabled
+            //services.AddDbContextPool<MtgDbContext>(options => options.UseSqlServer(connectionString));
 
             services.AddGraphQL(SchemaBuilder.New()
-                    .AddQueryType<Query>()
-                    .AddMutationType<UserMutation>()
+                    .AddQueryType(d => d.Name("Queries"))
+                        .AddType<Query>()
+                    .AddMutationType(d => d.Name("Mutations"))
+                        .AddType<UserMutation>()
+                        .AddType<DeckMutation>()
+                    //.EnableRelaySupport()
+                    .Create()
+            );
+
+            services.AddDataLoader<UserByIdDataLoader>();
                 // .AddType<UserType>()
                 // .AddMutationType<MutationType>()
                 // .AddSubscriptionType<SubscriptionType>()
@@ -40,7 +51,6 @@ namespace GraphQL.API
                 // .AddType<DroidType>()
                 // .AddType<EpisodeType>()
                 // .Create()
-            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,7 +69,7 @@ namespace GraphQL.API
             {
                 endpoints.MapGet("/", async context =>
                 {
-                    await context.Response.WriteAsync("Hello World!");
+                    await context.Response.WriteAsync("Hello World to My GraphQL experiment! Open me in Banana Cake Pop.");
                 });
             });
         }

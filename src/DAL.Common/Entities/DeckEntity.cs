@@ -17,7 +17,7 @@ namespace DAL.Common.Entities
         [ForeignKey(nameof(UserId))]
         public virtual UserEntity UserEntity { get; set; }
 
-        public virtual ICollection<GameParticipationEntity> GameParticipations { get; set; }
+        public virtual ICollection<GameParticipationEntity> GameParticipations { get; set; } = new List<GameParticipationEntity>();
 
     }
 }
