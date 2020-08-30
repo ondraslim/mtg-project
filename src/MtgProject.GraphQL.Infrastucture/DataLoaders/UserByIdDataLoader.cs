@@ -9,7 +9,7 @@ using HotChocolate.DataLoader;
 using HotChocolate.Types;
 using Microsoft.EntityFrameworkCore;
 
-namespace GraphQL.Types.DataLoader
+namespace MtgProject.GraphQL.Infrastructure.DataLoaders
 {
     public class UserByIdDataLoader : BatchDataLoader<Guid, UserEntity>
     {

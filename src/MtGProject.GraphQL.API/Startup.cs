@@ -1,7 +1,4 @@
 using DAL.EntityFramework.Data;
-using GraphQL.Types.DataLoader;
-using GraphQL.Types.Mutations;
-using GraphQL.Types.Queries;
 using HotChocolate;
 using HotChocolate.AspNetCore;
 using Microsoft.AspNetCore.Builder;
@@ -11,8 +8,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MtgProject.GraphQL.Infrastructure.DataLoaders;
+using MtgProject.GraphQL.Infrastructure.Mutations;
+using MtgProject.GraphQL.Infrastructure.Queries;
+using MtgProject.GraphQL.Infrastructure.Types.User;
 
-namespace GraphQL.API
+namespace MtgProject.GraphQL.API
 {
     public class Startup
     {
@@ -34,23 +35,16 @@ namespace GraphQL.API
             //services.AddDbContextPool<MtgDbContext>(options => options.UseSqlServer(connectionString));
 
             services.AddGraphQL(SchemaBuilder.New()
-                    .AddQueryType(d => d.Name("Queries"))
-                        .AddType<Query>()
-                    .AddMutationType(d => d.Name("Mutations"))
-                        .AddType<UserMutation>()
-                        .AddType<DeckMutation>()
-                    //.EnableRelaySupport()
-                    .Create()
-            );
+                .AddQueryType(d => d.Name("Queries"))
+                .AddType<Query>()
+                .AddMutationType(d => d.Name("Mutations"))
+                .AddType<UserMutation>()
+                .AddType<DeckMutation>()
+                //.EnableRelaySupport()
+                .AddType<UserType>()
+                .Create());
 
             services.AddDataLoader<UserByIdDataLoader>();
-                // .AddType<UserType>()
-                // .AddMutationType<MutationType>()
-                // .AddSubscriptionType<SubscriptionType>()
-                // .AddType<HumanType>()
-                // .AddType<DroidType>()
-                // .AddType<EpisodeType>()
-                // .Create()
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

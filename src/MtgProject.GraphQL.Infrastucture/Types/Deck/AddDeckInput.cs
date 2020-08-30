@@ -1,7 +1,7 @@
-﻿using GraphQL.Types.Types.Common;
-using System;
+﻿using System;
+using MtgProject.GraphQL.Infrastructure.Types.Common;
 
-namespace GraphQL.Types.Types.Deck
+namespace MtgProject.GraphQL.Infrastructure.Types.Deck
 {
     public class AddDeckInput : InputBase
     {

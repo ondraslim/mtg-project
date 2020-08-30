@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace GraphQL.API
+namespace MtgProject.GraphQL.API
 {
     public class Program
     {

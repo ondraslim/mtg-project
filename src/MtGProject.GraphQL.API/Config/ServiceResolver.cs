@@ -1,14 +1,14 @@
-﻿using Autofac;
+﻿using System;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using Autofac;
 using Autofac.Core;
 using Autofac.Extensions.DependencyInjection;
 using BusinessLayer.Config;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Linq;
-using System.Reflection;
-using System.Text;
 
-namespace GraphQL.API.Config
+namespace MtgProject.GraphQL.API.Config
 {
     public class ServiceResolver
     {

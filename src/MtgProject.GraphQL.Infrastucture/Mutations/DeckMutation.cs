@@ -2,12 +2,12 @@
 using System.Threading.Tasks;
 using DAL.Common.Entities;
 using DAL.EntityFramework.Data;
-using GraphQL.Types.Extensions;
-using GraphQL.Types.Types.Deck;
 using HotChocolate;
 using HotChocolate.Types;
+using MtgProject.GraphQL.Infrastructure.Extensions;
+using MtgProject.GraphQL.Infrastructure.Types.Deck;
 
-namespace GraphQL.Types.Mutations
+namespace MtgProject.GraphQL.Infrastructure.Mutations
 {
 
     [ExtendObjectType(Name = "Mutations")]

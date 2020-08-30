@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GraphQL.Types.Types.Common
+namespace MtgProject.GraphQL.Infrastructure.Types.Common
 {
     public class PayloadBase
     {

@@ -1,4 +1,4 @@
-﻿namespace GraphQL.Types.Extensions
+﻿namespace MtgProject.GraphQL.Infrastructure.Extensions
 {
     public static class ObjectFieldDescriptorExtensions
     {

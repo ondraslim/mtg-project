@@ -2,7 +2,7 @@
 using HotChocolate.Types;
 using HotChocolate.Types.Descriptors;
 
-namespace GraphQL.Types.Extensions
+namespace MtgProject.GraphQL.Infrastructure.Extensions
 {
     public class UseMtgDbContextAttribute : ObjectFieldDescriptorAttribute
     {

@@ -1,40 +1,33 @@
 ﻿using DAL.Common.Entities;
-using GraphQL.Types.DataLoader;
-using GraphQL.Types.Queries;
-using HotChocolate.Resolvers;
 using HotChocolate.Types;
-using HotChocolate.Types.Relay;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
+using MtgProject.GraphQL.Infrastructure.Resolvers;
 
-namespace GraphQL.Types.Types.User
+namespace MtgProject.GraphQL.Infrastructure.Types.User
 {
-    /* public class UserType : ObjectType<UserEntity>
+    public class UserType : ObjectType<UserEntity>
      {
          protected override void Configure(IObjectTypeDescriptor<UserEntity> descriptor)
          {
-             descriptor
-                 .AsNode()
-                 .IdField(t => t.Id)
-                 .NodeResolver((ctx, id) => ctx.DataLoader<UserByIdDataLoader>().LoadAsync(id, ctx.RequestAborted));
-
+             descriptor.Field(t => t.PasswordHash).Ignore();
+             
              descriptor
                  .Field(t => t.Decks)
-                 .ResolveWith<DeckResolvers>(t => t.GetDecksAsync(default!, default!, default))
+                 //.Resolver(ctx => ctx.Service<MtgDbContext>().Decks.Where(d => ctx.Parent<UserEntity>().Id == d.UserId))
+                 .ResolveWith<DeckResolvers>(d => d.GetDecksByUserAsync(default!, default!, default))
                  .Name("decks")
                  .UseFiltering()
                  .UseSorting()
                  .UseSelection();
-         }
 
-         private class DeckResolvers
-         {
-             public async Task<IEnumerable<DeckEntity>> GetDecksAsync(
-                 UserEntity user,
-                 Query query,
-                 CancellationToken cancellationToken) =>
-                 await query.Decks().LoadAsync(speaker.Id, cancellationToken);
-         }
-    }*/
+             //TODO: add resolver with data loader
+             descriptor
+                 .Field(t => t.GameParticipations)
+                 //.Resolver(ctx => ctx.Service<MtgDbContext>().GameParticipations.Where(d => ctx.Parent<UserEntity>().Id == d.UserId))
+                 .ResolveWith<GameParticipationResolvers>(d => d.GetGameParticiptionsByUserAsync(default!, default!, default))
+                 .Name("gameParticipations")
+                 .UseFiltering()
+                 .UseSorting()
+                 .UseSelection();
+        }
+     }
 }

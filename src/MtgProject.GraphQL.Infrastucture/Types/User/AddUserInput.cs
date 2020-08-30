@@ -1,6 +1,6 @@
-﻿using GraphQL.Types.Types.Common;
+﻿using MtgProject.GraphQL.Infrastructure.Types.Common;
 
-namespace GraphQL.Types.Types.User
+namespace MtgProject.GraphQL.Infrastructure.Types.User
 {
     public class AddUserInput : InputBase
     {

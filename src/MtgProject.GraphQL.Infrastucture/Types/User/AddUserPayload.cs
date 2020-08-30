@@ -1,8 +1,8 @@
-﻿using DAL.Common.Entities;
-using GraphQL.Types.Types.Common;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using DAL.Common.Entities;
+using MtgProject.GraphQL.Infrastructure.Types.Common;
 
-namespace GraphQL.Types.Types.User
+namespace MtgProject.GraphQL.Infrastructure.Types.User
 {
     public class AddUserPayload : PayloadBase
     {

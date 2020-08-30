@@ -7,7 +7,7 @@ using DAL.Common.Entities;
 using DAL.EntityFramework.Data;
 using HotChocolate.DataLoader;
 
-namespace GraphQL.Types.DataLoader
+namespace MtgProject.GraphQL.Infrastructure.DataLoaders
 {
     public class StatsByUserIdDataLoader : GroupedDataLoader<Guid, StatsEntity>
     {
